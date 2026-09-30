@@ -1,0 +1,90 @@
+//QUESTION 1
+
+1. Explain the differences between `var`, `let`, and `const` in JavaScript regarding variable scope, hoisting, and reassignment.
+
+`var`, `let`, and `const` are all ways of creating variables in JavaScript, but they work differently.
+
+ A.scope-  `var` is function-scoped, while `let` and `const` are block-scoped. 
+This means that `let` and `const` only work inside the `{ }` where they were created, while `var` can be accessed throughout the function.
+
+ B.Hoisting- `var`, `let`, and `const` are all hoisted, but they behave differently. With `var`, the variable is initialized as `undefined`, so we can technically access it before its declaration. With `let` and `const`, we cannot use the variable before declaring it because JavaScript will give us an error.
+
+C.Reassignment- a variable declared using `var` or `let` can be given a new value later. However, a variable declared using `const` cannot be reassigned after it has been given a value.
+
+For example:
+
+`let age = 19;`
+`age = 20;`
+
+This works because `let` allows reassignment. But:
+
+`const age = 19;`
+`age = 20;`
+
+will give an error because `const` cannot be reassigned.
+
+So, in simple terms, `var` is the older way of declaring variables, `let` is used when the value might change, and `const` is used when the value should not be reassigned.
+
+//QUESTION 2
+
+ What are the primitive data types available in JavaScript, and how do they fundamentally differ from reference types like arrays and objects?
+
+JavaScript has seven primitive data types. They are String, Number, BigInt, Boolean, Undefined, Null, and Symbol. These are used to represent simple values. 
+For example, a String can store text like `"Hello"`, a Number can store values like `19`, and a Boolean can be either `true` or `false`.
+
+Primitive values are different from reference types such as arrays and objects. When we create a primitive variable, the variable holds the actual value.
+ If we copy the variable and change the new variable, the original one is not affected.
+
+Arrays and objects work differently because 
+variables hold a reference to the data rather than directly holding the
+ whole object or array. 
+ This means that if two variables refer to the same object or array, changing the object or array through one variable can also affect what we see through the other variable.
+
+For example, if two variables refer to the same object and we change a property using one variable, 
+the change can also be seen using the other variable. 
+This is the main difference between primitive values and reference types.
+
+//QUESTION 
+
+3. Discuss the difference between loose equality (`==`) and strict equality (`===`). 
+Why is strict equality generally considered a best practice?
+
+The difference between `==` and `===` is that `==` checks whether two values are equal, while `===` checks whether the values are equal and also have the same data type.
+
+For example, `5 == "5"` is true because JavaScript converts the string `"5"` into a number before making the comparison. However, `5 === "5"` is false because one is a number and the other is a string.
+
+Strict equality (`===`) is generally considered a best practice because it does not automatically convert the data types.
+ This makes the code easier to understand and helps avoid unexpected results when comparing values.
+
+Therefore, we normally use `===` when we want to make sure that both the value and the data type are the same.
+
+///QUESTION 4
+
+4. How do logical operators (`&&`, `||`, `!`) evaluate expressions, and what is meant by "short-circuit evaluation"?
+
+Logical operators are used to combine or change conditions in JavaScript.
+
+The `&&` operator means AND. It returns true when both conditions are true. The `||` operator means OR, and it returns true when at least one of the conditions is true. The `!` operator means NOT and is used to reverse a Boolean value. For example, if a value is `true`, using `!` will make it `false`.
+
+Short-circuit evaluation means that JavaScript can stop checking an expression once it already knows the result. For example, with `&&`, if the first condition is false, JavaScript does not need to check the second condition because the whole expression cannot be true. With `||`, if the first condition is true, JavaScript can stop because the whole expression is already true.
+
+This helps JavaScript avoid doing unnecessary checks when evaluating logical expressions.
+
+
+QUESTTION 5
+5. Describe how a conditional `switch` statement can be used as an alternative to a long chain of `if...else if` statements,
+ and explain the role of the `default` keyword.
+
+A `switch` statement can be used when we want to compare one value with several possible values. 
+It can make the code easier to read compared to having many `if...else if` statements.
+
+A `switch` statement uses `case` to represent the different values that we are checking. 
+When a case matches the value, the code inside that case is executed. We normally use `break` after each case to stop the switch from continuing to the next case.
+
+The `default` keyword is used when none of the cases match.
+ It is similar to the final `else` in an `if...else if` statement. It gives us a way to handle a 
+ situation where the value does not match any of the options we have provided.
+
+
+
+
