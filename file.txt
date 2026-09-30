@@ -86,5 +86,538 @@ The `default` keyword is used when none of the cases match.
  situation where the value does not match any of the options we have provided.
 
 
+///JavaScript Core Mastery: Control Flow, Functions, and Scope
+
+1. Truthy and Falsy:
+
+Truthy values are values that are treated as true when used in a Boolean context. Falsy values are values that are treated as false.
+
+Examples of falsy values include:
+
+* false
+* 0
+* ""
+* null
+* undefined
+* NaN
+
+//question 2
+
+2. Short-Circuit Logic:
+
+The && (AND) and || (OR) operators use short-circuit evaluation. This means JavaScript stops evaluating an expression as soon as the result is known.
+
+With &&, if the first value is false, JavaScript does not need to evaluate the second value.
+
+With ||, if the first value is true, JavaScript does not need to evaluate the second value.
+
+The || operator can be used to provide a default value. For example:
+
+let username = "";
+let name = username || "Guest";
+
+console.log(name);
+
+The output will be:
+
+Guest
 
 
+//QUESTION 3
+
+3. The Strict Equality Operator:
+
+The === operator is generally recommended instead of == because it compares both the value and the data type without automatically converting one type into another.
+
+For example:
+
+5 == "5"
+
+This is true because the == operator performs type coercion and converts "5" into a number.
+
+However:
+
+5 === "5"
+
+This is false because 5 is a number while "5" is a string.
+
+Using === helps prevent unexpected results caused by type coercion.
+
+
+//QUESTION 4
+
+4. Condition Analysis:
+
+Given:
+
+const x = "5";
+const y = 5;
+
+if (x == y && typeof x === "string") {
+console.log("Result A");
+} else if (x === y || x > 0) {
+console.log("Result B");
+} else {
+console.log("Result C");
+}
+
+The first if block executes and the output is:
+
+Result A
+
+This is because x == y is true. The == operator allows type coercion, so JavaScript converts the string "5" into the number 5.
+
+The second condition, typeof x === "string", is also true because x is a string.
+
+Therefore:
+
+true && true
+
+is true, so the first if block executes.
+
+
+//QUESTION 5
+
+5. Nested Logic Transformation:
+
+A nested if...else structure can be rewritten using a switch statement when checking one variable against several specific values.
+
+Example:
+
+let day = "Monday";
+
+switch (day) {
+case "Monday":
+console.log("Start of the week");
+break;
+case "Friday":
+console.log("Almost the weekend");
+break;
+default:
+console.log("Regular day");
+}
+
+A switch statement is useful when comparing one value against several specific values.
+
+A ternary operator is better for a simple condition with two possible results.
+
+Example:
+
+let age = 20;
+let status = age >= 18 ? "Adult" : "Minor";
+
+In general, if...else is useful for complex conditions and ranges, switch is useful for multiple specific values, and the ternary operator is useful for short and simple conditions.
+
+PART two
+
+///QUESTION 6
+
+6. The Loop Lifecycle:
+
+A for loop has three expressions in its header:
+
+for (initialization; condition; final-expression)
+
+ Initialization: sets the starting value of the loop variable.
+ Condition: checks whether the loop should continue running.
+ Final-expression: usually updates the loop variable after each iteration.
+
+The final-expression executes after the loop body has finished running and before the next condition is checked.
+
+For example:
+
+for (let i = 0; i < 3; i++) {
+console.log(i);
+}
+
+The i++ runs after each execution of the loop body.
+
+///QUESTION 7
+
+7. Termination Hazards:
+
+A loop invariant is a condition or value that remains consistent during the execution of a loop and helps maintain the correctness of the loop.
+
+To make sure a while loop eventually reaches its termination condition, the programmer should update the variable used in the condition inside the loop.
+
+For example:
+
+let count = 0;
+
+while (count < 5) {
+console.log(count);
+count++;
+}
+
+Here, count++ changes the value of count on every iteration. Eventually, count becomes 5, making the condition false and stopping the loop.
+
+
+//QUESTION 8
+
+
+8. Break vs. Continue:
+
+The break keyword immediately stops the entire loop. When break is used, the loop ends and the program continues with the code after the loop.
+
+The continue keyword does not stop the loop. Instead, it skips the rest of the current iteration and moves to the next iteration.
+
+For example:
+
+for (let i = 0; i < 5; i++) {
+if (i === 2) {
+continue;
+}
+
+
+if (i === 4) {
+    break;
+}
+
+console.log(i);
+
+
+}
+
+The continue skips 2, while the break stops the loop when i reaches 4.
+
+The counter or iterator is normally updated according to the loop structure. continue does not reset or stop the counter, while break stops the loop completely.
+
+//QUESTION 9
+ Array Traversal:
+
+let numbers = [1, 2, 3, 4, 5, -6, 7, 8];
+
+for (let i = 0; i < numbers.length; i++) {
+if (numbers[i] < 0) {
+break;
+}
+
+
+if (numbers[i] % 2 === 0) {
+    continue;
+}
+
+console.log(numbers[i]);
+
+
+}
+
+This loop goes through the array one number at a time.
+
+The continue statement skips even numbers, while the break statement stops the loop
+ completely when a negative number is found.
+
+The output will be:
+
+1
+3
+5
+
+//QUESTION 10
+ Code Tracing (Nested Loops):
+
+Given:
+
+let count = 0;
+
+for (let i = 0; i < 3; i++) {
+for (let j = 3; j > i; j--) {
+count++;
+}
+}
+
+The final value of count is 6.
+
+
+When i = 0:
+
+* j = 3 → count = 1
+* j = 2 → count = 2
+* j = 1 → count = 3
+* j = 0 → inner loop stops
+
+When i = 1:
+
+* j = 3 → count = 4
+* j = 2 → count = 5
+* j = 1 → inner loop stops
+
+When i = 2:
+
+* j = 3 → count = 6
+* j = 2 → inner loop stops
+
+The final value of count is 6.
+
+//QUESTION 12
+
+ While vs. Do-While:
+
+A while loop checks the condition before running the code. If the condition is false from the beginning, the loop will not run at all.
+
+A do...while loop runs the code at least once before checking the condition.
+
+Example:
+
+let number = 10;
+
+while (number < 5) {
+console.log("While loop");
+}
+
+do {
+console.log("Do-while loop");
+} while (number < 5);
+
+The while loop does not print anything because 10 < 5 is false.
+
+The do...while loop prints "Do-while loop" once because the code runs before the condition is checked.
+
+PART 3
+
+ //QUESTION 12
+ Declaration vs. Expression:
+
+A Function Declaration is a function created using the function keyword and a function name.
+
+Example:
+
+function greet() {
+console.log("Hello");
+}
+
+A Function Expression stores a function inside a variable.
+
+Example:
+
+const greet = function() {
+console.log("Hello");
+};
+
+Function Declarations are hoisted, which means they can be called before they appear in the code.
+
+Example:
+
+greet();
+
+function greet() {
+console.log("Hello");
+}
+
+Function Expressions are not available before the variable is initialized, so they should be called after they are defined.
+
+ //QUESTION 13.
+ Parameters and Rest/Spread:
+
+The arguments object is an array-like object that contains all the arguments passed to a traditional function. It does not work in arrow functions.
+
+Example:
+
+function add() {
+console.log(arguments);
+}
+
+The Rest Parameter uses ...args to collect multiple arguments into a real array.
+
+Example:
+
+function add(...args) {
+console.log(args);
+}
+
+The Rest Parameter is preferred in modern JavaScript because it works with arrow functions and provides a real array that can be used with array methods such as map() and reduce().
+
+  QUESTION 14. 
+The Return Statement:
+
+If a return statement is used without a value, the function stops executing and returns undefined.
+
+Example:
+
+function test() {
+return;
+}
+
+console.log(test());
+
+The output is:
+
+undefined
+
+ QUESTION 15. 
+Arrow Function Anatomy
+
+The original function is:
+
+function multiply(a, b) {
+return a * b;
+}
+
+It can be converted into an arrow function as:
+
+const multiply = (a, b) => a * b;
+
+In a concise arrow function, the function keyword is removed and replaced with =>.
+
+The curly braces and return keyword can also be omitted when the function has a single expression. The expression is automatically returned.
+
+16. Higher-Order Concepts:
+
+If a function A is passed as an argument to another function B, function A is commonly called a callback function.
+
+Function B receives function A as an argument and can execute it when needed.
+
+Example:
+
+function greet(name) {
+console.log("Hello " + name);
+}
+
+function processUser(callback) {
+callback("June");
+}
+
+processUser(greet);
+
+In this example, greet is the callback function. The data "June" is passed to the callback when function B calls it.
+
+PART 4: SCOPES AND VARIABLE LIFETIME
+
+ //QUESTION 17
+ Global vs. Local:
+
+The Global Object is an object that is available throughout the JavaScript environment. In browsers, it is commonly represented by window. In Node.js, the global object is called global.
+
+Variables placed in the global scope can be accessed from many parts of a program.
+
+Polluting the global scope means creating too many global variables. This can cause naming conflicts, make code harder to maintain, and make it difficult to track where variables are being changed.
+
+It is generally better to keep variables inside functions or blocks when they are only needed there.
+
+18. Block Scope vs. Function Scope:
+
+The var keyword is function-scoped. This means a variable declared with var inside a function can be accessed throughout that function.
+
+The let and const keywords are block-scoped. This means they are only available inside the block where they are declared, such as an if statement or a for loop.
+
+Example:
+
+if (true) {
+let name = "June";
+const age = 20;
+var enrolled = true;
+}
+
+The variables name and age cannot be accessed outside the if block, but enrolled can be accessed outside the block if it is inside the same function.
+
+ES6 introduced let and const, which made it easier to control the scope of variables inside blocks, if statements, and for loops.
+
+//QUESTION 19
+Shadowing:
+
+Variable shadowing happens when a local variable has the same name as a variable in an outer or global scope.
+
+Example:
+
+let name = "June";
+
+function greet() {
+let name = "Alice";
+console.log(name);
+}
+
+greet();
+
+The output is:
+
+Alice
+
+The JavaScript engine uses the variable from the nearest scope. Therefore, the local name is used instead of the global name.
+
+ QUESTION 20.
+ Scope Tracing:
+
+Given:
+
+let a = 10;
+
+function outer() {
+let b = 20;
+
+
+if (true) {
+    let a = 30;
+    var c = 40;
+
+    console.log(a + b);
+}
+
+console.log(a);
+console.log(c);
+
+
+}
+
+outer();
+
+21. Scope Tracing Answer:
+
+The three values printed are:
+
+50
+10
+40
+
+Explanation:
+
+Inside the if block, the value of a is 30 and b is 20.
+
+Therefore:
+
+30 + 20 = 50
+
+So the first console.log prints:
+
+50
+
+The second console.log(a) is outside the if block. The a declared inside the if block uses let, which is block-scoped. Therefore, it cannot be accessed outside the if block.
+
+JavaScript uses the outer a, which was declared with:
+
+let a = 10;
+
+Therefore, the second console.log prints:
+
+10
+
+The variable c was declared using var. Since var is function-scoped, c is available throughout the outer() function even though it was declared inside the if block.
+
+Therefore, the third console.log prints:
+
+40
+
+22. Temporal Dead Zone:
+
+The Temporal Dead Zone (TDZ) is the period between entering a scope and the point where a let or const variable is declared.
+
+Trying to access a let variable before its declaration causes a ReferenceError.
+
+Example:
+
+console.log(name);
+let name = "June";
+
+This produces a ReferenceError.
+
+With var, the variable declaration is hoisted and initialized with undefined.
+
+Example:
+
+console.log(name);
+var name = "June";
+
+The output is:
+
+undefined
+
+Therefore, let and const cannot be accessed before their declarations, while var can be accessed but has the value undefined until its assignment.
